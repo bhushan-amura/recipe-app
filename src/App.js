@@ -32,14 +32,18 @@ const App = () => {
   }
 
   return (
-    <div className='App'>
+    <div className='App input-group mt-1'>
       <form onSubmit={getSearch} className='search-form'>
-        <input type="text" className='search-bar' value={search} onChange={updateSearch} />
-        <button className='search-btn' type='submit'>Search</button>
+        <div className='input-group-append' id='button-addon4'>
+          <input type="text" className='search-bar form-control' value={search} onChange={updateSearch} aria-describedby='button-addon4'/>
+          <button className='search-btn btn btn-outline-secondary' placeholder='Search Recipe' type='submit'>Search</button>
+        </div>
       </form>
-      {recipes.map(recipe => (
-        <Recipe key={recipe.recipe.title} title={recipe.recipe.label} calories={recipe.recipe.calories} />
-      ))}
+      <div className='row mt-1'>
+        {recipes.map(recipe => (
+          <Recipe key={recipe.recipe.label} title={recipe.recipe.label} calories={recipe.recipe.calories} image={recipe.recipe.image} link={recipe.recipe.url} />
+        ))}
+      </div>
     </div>
   );
 }
